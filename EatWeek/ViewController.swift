@@ -9,15 +9,19 @@
 import UIKit
 
 class ViewController: UIViewController {
-    //Does it push?
-
+    @IBOutlet weak var tableView: UITableView!
+    var days = [Day]()
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
     }
 
-  
-
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return days.count
+    }
 
 }
 

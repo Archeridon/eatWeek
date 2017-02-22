@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F705F8C1E5DE5A900399884 /* dayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F705F8B1E5DE5A900399884 /* dayViewController.swift */; };
+		3F705F8E1E5DE76A00399884 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F705F8D1E5DE76A00399884 /* Day.swift */; };
+		3F705F901E5DE8F100399884 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F705F8F1E5DE8F100399884 /* TableViewController.swift */; };
 		7E6980F11E5C94E9005DBEC1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6980F01E5C94E9005DBEC1 /* AppDelegate.swift */; };
-		7E6980F31E5C94E9005DBEC1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6980F21E5C94E9005DBEC1 /* ViewController.swift */; };
 		7E6980F61E5C94E9005DBEC1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E6980F41E5C94E9005DBEC1 /* Main.storyboard */; };
 		7E6980F81E5C94E9005DBEC1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7E6980F71E5C94E9005DBEC1 /* Assets.xcassets */; };
 		7E6980FB1E5C94E9005DBEC1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E6980F91E5C94E9005DBEC1 /* LaunchScreen.storyboard */; };
@@ -34,9 +36,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3F705F8B1E5DE5A900399884 /* dayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = dayViewController.swift; sourceTree = "<group>"; };
+		3F705F8D1E5DE76A00399884 /* Day.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
+		3F705F8F1E5DE8F100399884 /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		7E6980ED1E5C94E9005DBEC1 /* EatWeek.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EatWeek.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E6980F01E5C94E9005DBEC1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		7E6980F21E5C94E9005DBEC1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		7E6980F51E5C94E9005DBEC1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7E6980F71E5C94E9005DBEC1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7E6980FA1E5C94E9005DBEC1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -98,8 +102,10 @@
 			isa = PBXGroup;
 			children = (
 				7E6980F01E5C94E9005DBEC1 /* AppDelegate.swift */,
-				7E6980F21E5C94E9005DBEC1 /* ViewController.swift */,
+				3F705F8D1E5DE76A00399884 /* Day.swift */,
 				7E6980F41E5C94E9005DBEC1 /* Main.storyboard */,
+				3F705F8F1E5DE8F100399884 /* TableViewController.swift */,
+				3F705F8B1E5DE5A900399884 /* dayViewController.swift */,
 				7E6980F71E5C94E9005DBEC1 /* Assets.xcassets */,
 				7E6980F91E5C94E9005DBEC1 /* LaunchScreen.storyboard */,
 				7E6980FC1E5C94E9005DBEC1 /* Info.plist */,
@@ -259,7 +265,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7E6980F31E5C94E9005DBEC1 /* ViewController.swift in Sources */,
+				3F705F8C1E5DE5A900399884 /* dayViewController.swift in Sources */,
+				3F705F8E1E5DE76A00399884 /* Day.swift in Sources */,
+				3F705F901E5DE8F100399884 /* TableViewController.swift in Sources */,
 				7E6980F11E5C94E9005DBEC1 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -505,6 +513,7 @@
 				7E6981171E5C94EA005DBEC1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7E6981181E5C94EA005DBEC1 /* Build configuration list for PBXNativeTarget "EatWeekTests" */ = {
 			isa = XCConfigurationList;
@@ -513,6 +522,7 @@
 				7E69811A1E5C94EA005DBEC1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7E69811B1E5C94EA005DBEC1 /* Build configuration list for PBXNativeTarget "EatWeekUITests" */ = {
 			isa = XCConfigurationList;
@@ -521,6 +531,7 @@
 				7E69811D1E5C94EA005DBEC1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
