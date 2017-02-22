@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		3F705F8C1E5DE5A900399884 /* dayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F705F8B1E5DE5A900399884 /* dayViewController.swift */; };
 		3F705F8E1E5DE76A00399884 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F705F8D1E5DE76A00399884 /* Day.swift */; };
-		3F705F901E5DE8F100399884 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F705F8F1E5DE8F100399884 /* TableViewController.swift */; };
+		3F705F921E5E292900399884 /* TVViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F705F911E5E292900399884 /* TVViewController.swift */; };
 		7E6980F11E5C94E9005DBEC1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6980F01E5C94E9005DBEC1 /* AppDelegate.swift */; };
 		7E6980F61E5C94E9005DBEC1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E6980F41E5C94E9005DBEC1 /* Main.storyboard */; };
 		7E6980F81E5C94E9005DBEC1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7E6980F71E5C94E9005DBEC1 /* Assets.xcassets */; };
@@ -38,7 +38,7 @@
 /* Begin PBXFileReference section */
 		3F705F8B1E5DE5A900399884 /* dayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = dayViewController.swift; sourceTree = "<group>"; };
 		3F705F8D1E5DE76A00399884 /* Day.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
-		3F705F8F1E5DE8F100399884 /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		3F705F911E5E292900399884 /* TVViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TVViewController.swift; sourceTree = "<group>"; };
 		7E6980ED1E5C94E9005DBEC1 /* EatWeek.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EatWeek.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E6980F01E5C94E9005DBEC1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7E6980F51E5C94E9005DBEC1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -104,7 +104,7 @@
 				7E6980F01E5C94E9005DBEC1 /* AppDelegate.swift */,
 				3F705F8D1E5DE76A00399884 /* Day.swift */,
 				7E6980F41E5C94E9005DBEC1 /* Main.storyboard */,
-				3F705F8F1E5DE8F100399884 /* TableViewController.swift */,
+				3F705F911E5E292900399884 /* TVViewController.swift */,
 				3F705F8B1E5DE5A900399884 /* dayViewController.swift */,
 				7E6980F71E5C94E9005DBEC1 /* Assets.xcassets */,
 				7E6980F91E5C94E9005DBEC1 /* LaunchScreen.storyboard */,
@@ -267,7 +267,7 @@
 			files = (
 				3F705F8C1E5DE5A900399884 /* dayViewController.swift in Sources */,
 				3F705F8E1E5DE76A00399884 /* Day.swift in Sources */,
-				3F705F901E5DE8F100399884 /* TableViewController.swift in Sources */,
+				3F705F921E5E292900399884 /* TVViewController.swift in Sources */,
 				7E6980F11E5C94E9005DBEC1 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
