@@ -10,6 +10,9 @@ import UIKit
 
 class dayViewController: UIViewController {
     
+    var days: Day?
+    
+ 
     @IBOutlet weak var breakfastImage: UIImageView!
     @IBOutlet weak var lunchImage: UIImageView!
     @IBOutlet weak var dinnerImage: UIImageView!
@@ -40,6 +43,7 @@ class dayViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         
     animationTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(animationCount), userInfo: nil, repeats: true)
     
@@ -146,7 +150,7 @@ class dayViewController: UIViewController {
         {
             if breakBeta == true
                 {
-            snackAlpha = snackAlpha + 1 0.05
+            snackAlpha = snackAlpha + 0.05
             snacksImage.alpha = CGFloat(snackAlpha)
                 }
             else
