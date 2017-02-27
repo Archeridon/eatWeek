@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TVViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class TVViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UINavigationControllerDelegate {
     @IBOutlet weak var tableView: UITableView!
 
     var days: [String] = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
