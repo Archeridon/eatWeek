@@ -146,7 +146,7 @@ class dayViewController: UIViewController {
         {
             if breakBeta == true
                 {
-            snackAlpha = snackAlpha + 1 0.05
+            snackAlpha = snackAlpha + 0.05
             snacksImage.alpha = CGFloat(snackAlpha)
                 }
             else
