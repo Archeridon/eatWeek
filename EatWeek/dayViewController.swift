@@ -8,11 +8,17 @@
 
 import UIKit
 
-class dayViewController: UIViewController {
+class dayViewController: UIViewController, UITextFieldDelegate, UINavigationControllerDelegate {
     
     var days: Day?
     
- 
+    @IBOutlet weak var cancelButton: UIBarButtonItem!
+    @IBOutlet weak var saveButton: UIBarButtonItem!
+    @IBOutlet weak var BreakfastText: UITextField!
+    @IBOutlet weak var LunchText: UITextField!
+    @IBOutlet weak var DinnerText: UITextField!
+    @IBOutlet weak var SnackText: UITextField!
+    
     @IBOutlet weak var breakfastImage: UIImageView!
     @IBOutlet weak var lunchImage: UIImageView!
     @IBOutlet weak var dinnerImage: UIImageView!
@@ -48,12 +54,47 @@ class dayViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        BreakfastText.delegate = self
+        LunchText.delegate = self
+        DinnerText.delegate = self
+        SnackText.delegate = self
+        
+        if let days = days {
+            BreakfastText.text = days.breakfast
+            LunchText.text = days.lunch
+            DinnerText.text = days.dinner
+            SnackText.text = days.snack
+        }
+        updateSaveButtonState()
+    
+
+    
         
     animationTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(animationCount), userInfo: nil, repeats: true)
     
     alphaTimer = Timer.scheduledTimer(timeInterval: 0.07, target: self, selector: #selector(alphaAnimation), userInfo: nil, repeats: true)
     }
     
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        saveButton.isEnabled = false
+    }
+
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        updateSaveButtonState()
+    }
+
+    private func updateSaveButtonState() {
+        let text = BreakfastText.text ?? ""
+        let texty = LunchText.text ?? ""
+        let textyy = DinnerText.text ?? ""
+        let textyyy = SnackText.text ?? ""
+        saveButton.isEnabled = !text.isEmpty && !texty.isEmpty && !textyy.isEmpty && !textyyy.isEmpty
+    }
 
     func animationCount()
     {
@@ -203,7 +244,28 @@ class dayViewController: UIViewController {
             }
         }
     }
-
    
+    @IBAction func saveButton(_ sender: UIBarButtonItem) {
+        
+    }
+    
+    @IBAction func cancelButton(_ sender: UIBarButtonItem) {
+        
+        let isPresentingInAddMealMode = presentingViewController is UINavigationController
+        if isPresentingInAddMealMode {
+            dismiss(animated: true, completion: nil)
+        }
+        else if let owningNavigationController = navigationController{
+            owningNavigationController.popViewController(animated: true)
+        }
+        else {
+            fatalError("Not in a nav controller")
+        }
+    }
+    
+
+    
+    
+    
 
 }
