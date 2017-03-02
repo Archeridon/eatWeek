@@ -31,7 +31,7 @@ class dayViewController: UIViewController {
     var dinnerChange = false
     var snackChange = false
     
-    var breakAlpha = 1.0
+    var breakAlpha : Double = 1.0
     var lunchAlpha = 1.0
     var dinnerAlpha = 1.0
     var snackAlpha = 1.0
@@ -41,41 +41,45 @@ class dayViewController: UIViewController {
     var dinnerBeta = false
     var snackBeta = false
     
+    var breakArray = ["yogurt", "pancake", "fruit"]
+    
+    var breakNoRepeat = "waffle"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         
     animationTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(animationCount), userInfo: nil, repeats: true)
     
-    alphaTimer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(alphaAnimation), userInfo: nil, repeats: true)
+    alphaTimer = Timer.scheduledTimer(timeInterval: 0.07, target: self, selector: #selector(alphaAnimation), userInfo: nil, repeats: true)
     }
     
 
     func animationCount()
     {
        
-        if breakCount <= 5{
+        if breakCount <= 1{
         breakCount = breakCount + 1
         }
         else
         {
            breakChange = true
         }
-        if lunchCount <= 5{
+        if lunchCount <= 3{
             lunchCount = lunchCount + 1
         }
         else
         {
             lunchChange = true
         }
-        if dinnerCount <= 5{
+        if dinnerCount <= 3{
             dinnerCount = dinnerCount + 1
         }
         else
         {
             dinnerChange = true
         }
-        if snackCount <= 5{
+        if snackCount <= 3{
             snackCount = snackCount + 1
         }
         else
@@ -94,23 +98,42 @@ class dayViewController: UIViewController {
             if breakBeta == true
                 {
             breakAlpha = breakAlpha + 0.05
+            breakAlpha = Double(round(100*self.breakAlpha)/100)
             breakfastImage.alpha = CGFloat(breakAlpha)
+        
                 }
             else
                 {
             breakAlpha = breakAlpha - 0.05
+            breakAlpha = Double(round(100*self.breakAlpha)/100)
             breakfastImage.alpha = CGFloat(breakAlpha)
+            
                 }
             if breakAlpha == 0.0
             {
+                
                 breakBeta = true
+                var random = Int(arc4random_uniform(3))
+                var breakIm = breakArray[random]
+                breakArray.append("\(breakNoRepeat)")
+                breakArray.remove(at: random)
+                breakNoRepeat = breakIm
+                breakfastImage.image = UIImage(named:"\(breakIm)")!
+                print("\(breakIm)")
+            }
+            if breakAlpha == 1.0
+            {
+                breakCount = 0
+                breakChange = false
+                breakBeta = false
+                
             }
         }
         if lunchChange == false
         {}
         else
         {
-            if breakBeta == true
+            if lunchBeta == true
                 {
             lunchAlpha = lunchAlpha + 0.05
             lunchImage.alpha = CGFloat(lunchAlpha)
@@ -124,12 +147,17 @@ class dayViewController: UIViewController {
             {
                 lunchBeta = true
             }
+            if lunchAlpha == 1.0
+            {
+                lunchCount = 0
+                lunchChange = false
+            }
         }
         if dinnerChange == false
         {}
         else
         {
-            if breakBeta == true
+            if dinnerBeta == true
                 {
             dinnerAlpha = dinnerAlpha + 0.05
             dinnerImage.alpha = CGFloat(dinnerAlpha)
@@ -143,12 +171,18 @@ class dayViewController: UIViewController {
             {
                 dinnerBeta = true
             }
+            if dinnerAlpha == 1.0
+            {
+                dinnerCount = 0
+                dinnerChange = false
+            }
+            
         }
         if snackChange == false
         {}
         else
         {
-            if breakBeta == true
+            if snackBeta == true
                 {
             snackAlpha = snackAlpha + 0.05
             snacksImage.alpha = CGFloat(snackAlpha)
@@ -161,6 +195,11 @@ class dayViewController: UIViewController {
             if snackAlpha == 0.0
             {
                 snackBeta = true
+            }
+            if snackAlpha == 1.0
+            {
+                snackCount = 0
+                snackChange = false
             }
         }
     }
