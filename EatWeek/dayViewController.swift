@@ -47,12 +47,23 @@ class dayViewController: UIViewController, UITextFieldDelegate, UINavigationCont
     var dinnerBeta = false
     var snackBeta = false
     
-    var breakArray = ["yogurt", "pancake", "fruit"]
+    var breakArray = ["yogurt", "pancake", "fruit", "pastries", "oatmeal"]
+    var lunchArray = ["salad","chicken","soup"]
+    var dinnerArray = ["wings", "potato", "stew"]
+    var snackArray = ["cherry", "mix", "nut", "cookie", "chipmix"]
     
     var breakNoRepeat = "waffle"
+    var lunchNoRepeat = "sandwich"
+    var dinnerNoRepeat = "lasagna"
+    var snackNoRepeat = "chip"
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        breakfastImage.image = UIImage(named:"waffle")!
+        lunchImage.image = UIImage(named:"sandwich")!
+        dinnerImage.image = UIImage(named:"lasagna")!
+        snacksImage.image = UIImage(named:"chip")!
         
         BreakfastText.delegate = self
         LunchText.delegate = self
@@ -99,7 +110,7 @@ class dayViewController: UIViewController, UITextFieldDelegate, UINavigationCont
     func animationCount()
     {
        
-        if breakCount <= 1{
+        if breakCount <= 3{
         breakCount = breakCount + 1
         }
         else
@@ -154,7 +165,7 @@ class dayViewController: UIViewController, UITextFieldDelegate, UINavigationCont
             {
                 
                 breakBeta = true
-                var random = Int(arc4random_uniform(3))
+                var random = Int(arc4random_uniform(5))
                 var breakIm = breakArray[random]
                 breakArray.append("\(breakNoRepeat)")
                 breakArray.remove(at: random)
@@ -177,21 +188,31 @@ class dayViewController: UIViewController, UITextFieldDelegate, UINavigationCont
             if lunchBeta == true
                 {
             lunchAlpha = lunchAlpha + 0.05
+            lunchAlpha = Double(round(100*self.lunchAlpha)/100)
             lunchImage.alpha = CGFloat(lunchAlpha)
                 }
             else
                 {
             lunchAlpha = lunchAlpha - 0.05
+            lunchAlpha = Double(round(100*self.lunchAlpha)/100)
             lunchImage.alpha = CGFloat(lunchAlpha)
                 }
             if lunchAlpha == 0.0
             {
+                var random = Int(arc4random_uniform(3))
+                var lunchIm = lunchArray[random]
+                lunchArray.append("\(lunchNoRepeat)")
+                lunchArray.remove(at: random)
+                lunchNoRepeat = lunchIm
+                lunchImage.image = UIImage(named:"\(lunchIm)")!
+                print("\(lunchIm)")
                 lunchBeta = true
             }
             if lunchAlpha == 1.0
             {
                 lunchCount = 0
                 lunchChange = false
+                lunchBeta = false
             }
         }
         if dinnerChange == false
@@ -201,21 +222,31 @@ class dayViewController: UIViewController, UITextFieldDelegate, UINavigationCont
             if dinnerBeta == true
                 {
             dinnerAlpha = dinnerAlpha + 0.05
+            dinnerAlpha = Double(round(100*self.dinnerAlpha)/100)
             dinnerImage.alpha = CGFloat(dinnerAlpha)
                 }
             else
                 {
             dinnerAlpha = dinnerAlpha - 0.05
+            dinnerAlpha = Double(round(100*self.dinnerAlpha)/100)
             dinnerImage.alpha = CGFloat(dinnerAlpha)
                 }
             if dinnerAlpha == 0.0
             {
+                var random = Int(arc4random_uniform(3))
+                var dinnerIm = dinnerArray[random]
+                dinnerArray.append("\(dinnerNoRepeat)")
+                dinnerArray.remove(at: random)
+                dinnerNoRepeat = dinnerIm
+                dinnerImage.image = UIImage(named:"\(dinnerIm)")!
+                print("\(dinnerIm)")
                 dinnerBeta = true
             }
             if dinnerAlpha == 1.0
             {
                 dinnerCount = 0
                 dinnerChange = false
+                dinnerBeta = false
             }
             
         }
@@ -226,21 +257,31 @@ class dayViewController: UIViewController, UITextFieldDelegate, UINavigationCont
             if snackBeta == true
                 {
             snackAlpha = snackAlpha + 0.05
+            snackAlpha = Double(round(100*self.snackAlpha)/100)
             snacksImage.alpha = CGFloat(snackAlpha)
                 }
             else
                 {
             snackAlpha = snackAlpha - 0.05
+            snackAlpha = Double(round(100*self.snackAlpha)/100)
             snacksImage.alpha = CGFloat(snackAlpha)
                 }
             if snackAlpha == 0.0
             {
+                var random = Int(arc4random_uniform(4))
+                var snackIm = snackArray[random]
+                snackArray.append("\(snackNoRepeat)")
+                snackArray.remove(at: random)
+                snackNoRepeat = snackIm
+                snacksImage.image = UIImage(named:"\(snackIm)")!
+                print("\(snackIm)")
                 snackBeta = true
             }
             if snackAlpha == 1.0
             {
                 snackCount = 0
                 snackChange = false
+                snackBeta = false
             }
         }
     }
