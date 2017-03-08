@@ -78,9 +78,6 @@ class dayViewController: UIViewController, UITextFieldDelegate, UINavigationCont
         }
         updateSaveButtonState()
     
-
-    
-        
     animationTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(animationCount), userInfo: nil, repeats: true)
     
     alphaTimer = Timer.scheduledTimer(timeInterval: 0.07, target: self, selector: #selector(alphaAnimation), userInfo: nil, repeats: true)
@@ -307,6 +304,6 @@ class dayViewController: UIViewController, UITextFieldDelegate, UINavigationCont
 
     
     
-    
+
 
 }
