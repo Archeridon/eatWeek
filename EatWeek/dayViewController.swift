@@ -77,24 +77,24 @@ class dayViewController: UIViewController, UITextFieldDelegate, UINavigationCont
         SnackText.delegate = self
         
         if let days = days {
-            navigationItem.title = days.breakfast
+            //navigationItem.title = days.breakfast
             BreakfastText.text = days.breakfast
             LunchText.text = days.lunch
             DinnerText.text = days.dinner
             SnackText.text = days.snack
         }
-    
+        updateSaveButtonState()
+
     animationTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(animationCount), userInfo: nil, repeats: true)
     
     alphaTimer = Timer.scheduledTimer(timeInterval: 0.07, target: self, selector: #selector(alphaAnimation), userInfo: nil, repeats: true)
         
-        //updateSaveButtonState()
 
         
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-      // saveButton.isEnabled = false
+      saveButton.isEnabled = false
     }
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -103,15 +103,15 @@ class dayViewController: UIViewController, UITextFieldDelegate, UINavigationCont
     }
 
     func textFieldDidEndEditing(_ textField: UITextField) {
-       // updateSaveButtonState()
+        updateSaveButtonState()
         navigationItem.title = textField.text
     }
 
-   private func updateSaveButtonState() {
-     //   let text = BreakfastText.text ?? ""
-        //saveButton.isEnabled = !text.isEmpty
-   
+    private func updateSaveButtonState() {
+        let text = BreakfastText.text ?? ""
+        saveButton.isEnabled = !text.isEmpty
     }
+
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
@@ -311,7 +311,8 @@ class dayViewController: UIViewController, UITextFieldDelegate, UINavigationCont
     }
    
     @IBAction func saveButton(_ sender: UIBarButtonItem) {
-       
+      
+
     }
     
     @IBAction func cancelButton(_ sender: UIBarButtonItem) {
@@ -333,13 +334,7 @@ class dayViewController: UIViewController, UITextFieldDelegate, UINavigationCont
         
         }
     
-    override func prepare(for segue: UIStoryboardSegue!, sender: Any!) {
-        if (segue.identifier == "segue") {
-            let svc = segue!.destination as! TVViewController
-        
-        }
-    }
-    
+
     }
 
     
