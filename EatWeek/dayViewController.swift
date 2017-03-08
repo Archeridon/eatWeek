@@ -329,12 +329,6 @@ class dayViewController: UIViewController, UITextFieldDelegate, UINavigationCont
         }
     }
     
-    @IBAction func buttonOnTheDownlow(_ sender: Any)
-    {
-        
-        }
-    
-
     }
 
     
