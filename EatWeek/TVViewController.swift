@@ -9,13 +9,15 @@
 import UIKit
 
 class TVViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UINavigationControllerDelegate {
-    @IBOutlet weak var tableView: UITableView!
-
+   
     var days: [String] = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
     
-    override func viewDidLoad() {
+    @IBOutlet weak var tableView: UITableView!
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
-  self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+  //self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        tableView.delegate = self
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -30,7 +32,7 @@ class TVViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         return cell
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: IndexPath) {
         print("You selected cell #\(indexPath.row)!")
     }
 

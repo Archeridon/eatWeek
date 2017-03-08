@@ -9,6 +9,7 @@
 import UIKit
 
 class dayViewController: UIViewController, UITextFieldDelegate, UINavigationControllerDelegate {
+    let userDefault = UserDefaults.standard
     
     var days: Day?
     
@@ -56,10 +57,13 @@ class dayViewController: UIViewController, UITextFieldDelegate, UINavigationCont
     var lunchNoRepeat = "sandwich"
     var dinnerNoRepeat = "lasagna"
     var snackNoRepeat = "chip"
+    var breakingFast = String()
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
+       
+        BreakfastText.text = "\(breakingFast)"
         breakfastImage.image = UIImage(named:"waffle")!
         lunchImage.image = UIImage(named:"sandwich")!
         dinnerImage.image = UIImage(named:"lasagna")!
@@ -301,9 +305,16 @@ class dayViewController: UIViewController, UITextFieldDelegate, UINavigationCont
         }
     }
     
+    @IBAction func buttonOnTheDownlow(_ sender: Any)
+    {
+        
+        }
+        
+        
+    }
 
     
     
 
 
-}
+
