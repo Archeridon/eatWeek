@@ -6,7 +6,7 @@
 //  Copyright © 2017 Alexander Pacini. All rights reserved.
 //
 
-import Foundation
+//import Foundation
 import UIKit
 import os.log
 
