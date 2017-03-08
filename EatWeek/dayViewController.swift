@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import os.log
 
 class dayViewController: UIViewController, UITextFieldDelegate, UINavigationControllerDelegate {
     let userDefault = UserDefaults.standard
@@ -80,11 +81,14 @@ class dayViewController: UIViewController, UITextFieldDelegate, UINavigationCont
             DinnerText.text = days.dinner
             SnackText.text = days.snack
         }
-        updateSaveButtonState()
     
     animationTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(animationCount), userInfo: nil, repeats: true)
     
     alphaTimer = Timer.scheduledTimer(timeInterval: 0.07, target: self, selector: #selector(alphaAnimation), userInfo: nil, repeats: true)
+        
+        updateSaveButtonState()
+
+        
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
@@ -102,10 +106,10 @@ class dayViewController: UIViewController, UITextFieldDelegate, UINavigationCont
 
     private func updateSaveButtonState() {
         let text = BreakfastText.text ?? ""
-        let texty = LunchText.text ?? ""
-        let textyy = DinnerText.text ?? ""
-        let textyyy = SnackText.text ?? ""
-        saveButton.isEnabled = !text.isEmpty && !texty.isEmpty && !textyy.isEmpty && !textyyy.isEmpty
+      //  let texty = LunchText.text ?? ""
+       // let textyy = DinnerText.text ?? ""
+       // let textyyy = SnackText.text ?? ""
+        saveButton.isEnabled = !text.isEmpty
     }
 
     func animationCount()
@@ -310,7 +314,30 @@ class dayViewController: UIViewController, UITextFieldDelegate, UINavigationCont
         
         }
         
+    
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
+        super.prepare(for: segue, sender: sender)
+        
+        guard let button = sender as? UIBarButtonItem, button == saveButton else {
+            os_log("The save button was not pressed, cancelling", log: OSLog.default, type: .debug)
+            return
+        }
+        
+        let breakfast = BreakfastText.text ?? ""
+        let lunch = LunchText.text ?? ""
+        let dinner = DinnerText.text ?? ""
+        let snack = SnackText.text ?? ""
+        
+        days = Day(breakfast: breakfast, lunch: lunch, dinner: dinner, snack: snack)
+    }
+
+    
+    
+    
+    
     }
 
     
