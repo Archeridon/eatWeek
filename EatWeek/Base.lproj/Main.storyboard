@@ -177,7 +177,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="vJL-rh-Ur9" kind="show" id="EEE-wk-oND"/>
+                                            <segue destination="vJL-rh-Ur9" kind="show" identifier="segue" id="EEE-wk-oND"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

@@ -8,6 +8,7 @@
 
 import UIKit
 import os.log
+import AVFoundation
 
 class dayViewController: UIViewController, UITextFieldDelegate, UINavigationControllerDelegate {
     let userDefault = UserDefaults.standard
@@ -76,6 +77,7 @@ class dayViewController: UIViewController, UITextFieldDelegate, UINavigationCont
         SnackText.delegate = self
         
         if let days = days {
+            navigationItem.title = days.breakfast
             BreakfastText.text = days.breakfast
             LunchText.text = days.lunch
             DinnerText.text = days.dinner
@@ -86,13 +88,13 @@ class dayViewController: UIViewController, UITextFieldDelegate, UINavigationCont
     
     alphaTimer = Timer.scheduledTimer(timeInterval: 0.07, target: self, selector: #selector(alphaAnimation), userInfo: nil, repeats: true)
         
-        updateSaveButtonState()
+        //updateSaveButtonState()
 
         
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        saveButton.isEnabled = false
+      // saveButton.isEnabled = false
     }
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -101,16 +103,33 @@ class dayViewController: UIViewController, UITextFieldDelegate, UINavigationCont
     }
 
     func textFieldDidEndEditing(_ textField: UITextField) {
-        updateSaveButtonState()
+       // updateSaveButtonState()
+        navigationItem.title = textField.text
     }
 
-    private func updateSaveButtonState() {
-        let text = BreakfastText.text ?? ""
-      //  let texty = LunchText.text ?? ""
-       // let textyy = DinnerText.text ?? ""
-       // let textyyy = SnackText.text ?? ""
-        saveButton.isEnabled = !text.isEmpty
+   private func updateSaveButtonState() {
+     //   let text = BreakfastText.text ?? ""
+        //saveButton.isEnabled = !text.isEmpty
+   
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        super.prepare(for: segue, sender: sender)
+        
+        guard let button = sender as? UIBarButtonItem, button == saveButton else {
+            os_log("The save button was not pressed, cancelling", log: OSLog.default, type: .debug)
+            return
+        }
+        
+        let breakfast = BreakfastText.text ?? ""
+        let lunch = LunchText.text ?? ""
+        let dinner = DinnerText.text ?? ""
+        let snack = SnackText.text ?? ""
+        
+        days = Day(breakfast: breakfast, lunch: lunch, dinner: dinner, snack: snack)
+    }
+
 
     func animationCount()
     {
@@ -292,7 +311,7 @@ class dayViewController: UIViewController, UITextFieldDelegate, UINavigationCont
     }
    
     @IBAction func saveButton(_ sender: UIBarButtonItem) {
-        
+       
     }
     
     @IBAction func cancelButton(_ sender: UIBarButtonItem) {
@@ -313,30 +332,13 @@ class dayViewController: UIViewController, UITextFieldDelegate, UINavigationCont
     {
         
         }
-        
     
-    
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    override func prepare(for segue: UIStoryboardSegue!, sender: Any!) {
+        if (segue.identifier == "segue") {
+            let svc = segue!.destination as! TVViewController
         
-        super.prepare(for: segue, sender: sender)
-        
-        guard let button = sender as? UIBarButtonItem, button == saveButton else {
-            os_log("The save button was not pressed, cancelling", log: OSLog.default, type: .debug)
-            return
         }
-        
-        let breakfast = BreakfastText.text ?? ""
-        let lunch = LunchText.text ?? ""
-        let dinner = DinnerText.text ?? ""
-        let snack = SnackText.text ?? ""
-        
-        days = Day(breakfast: breakfast, lunch: lunch, dinner: dinner, snack: snack)
     }
-
-    
-    
-    
     
     }
 

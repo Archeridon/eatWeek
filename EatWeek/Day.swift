@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import os.log
 
-class Day : NSObject {
+class Day : NSObject, NSCoding {
     
     var breakfast: String
     var lunch: String
@@ -20,7 +20,7 @@ class Day : NSObject {
     static let ArchiveURL = DocumentsDirectory.appendingPathComponent("days")
     
     init?(breakfast: String, lunch: String, dinner: String, snack: String) {
-        guard !breakfast.isEmpty && !lunch.isEmpty && !dinner.isEmpty && !snack.isEmpty else {
+        guard !breakfast.isEmpty else {
             return nil
         }
 
