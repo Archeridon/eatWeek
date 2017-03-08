@@ -13,7 +13,7 @@ import AVFoundation
 class dayViewController: UIViewController, UITextFieldDelegate, UINavigationControllerDelegate {
     let userDefault = UserDefaults.standard
     
-    var days: Day?
+    var days : Day!
     
     @IBOutlet weak var cancelButton: UIBarButtonItem!
     @IBOutlet weak var saveButton: UIBarButtonItem!
@@ -65,7 +65,7 @@ class dayViewController: UIViewController, UITextFieldDelegate, UINavigationCont
     override func viewDidLoad() {
         super.viewDidLoad()
        
-        BreakfastText.text = "\(breakingFast)"
+        //BreakfastText.text = "\(breakingFast)"
         breakfastImage.image = UIImage(named:"waffle")!
         lunchImage.image = UIImage(named:"sandwich")!
         dinnerImage.image = UIImage(named:"lasagna")!
@@ -76,13 +76,11 @@ class dayViewController: UIViewController, UITextFieldDelegate, UINavigationCont
         DinnerText.delegate = self
         SnackText.delegate = self
         
-        if let days = days {
-            //navigationItem.title = days.breakfast
             BreakfastText.text = days.breakfast
             LunchText.text = days.lunch
             DinnerText.text = days.dinner
             SnackText.text = days.snack
-        }
+        
         updateSaveButtonState()
 
     animationTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(animationCount), userInfo: nil, repeats: true)
@@ -108,8 +106,12 @@ class dayViewController: UIViewController, UITextFieldDelegate, UINavigationCont
     }
 
     private func updateSaveButtonState() {
-        let text = BreakfastText.text ?? ""
-        saveButton.isEnabled = !text.isEmpty
+        //let text = BreakfastText.text ?? ""
+        
+        if let text = BreakfastText.text, !text.isEmpty{
+        
+        saveButton.isEnabled = true
+    }
     }
 
     
@@ -311,8 +313,11 @@ class dayViewController: UIViewController, UITextFieldDelegate, UINavigationCont
     }
    
     @IBAction func saveButton(_ sender: UIBarButtonItem) {
-      
-
+        days.breakfast = BreakfastText.text!
+        days.lunch = LunchText.text!
+        days.dinner = DinnerText!
+        days.snack = SnackText.text!
+        
     }
     
     @IBAction func cancelButton(_ sender: UIBarButtonItem) {
