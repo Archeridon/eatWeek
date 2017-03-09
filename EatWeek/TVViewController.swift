@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import os.log
 
 class TVViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UINavigationControllerDelegate {
    
@@ -37,5 +38,20 @@ class TVViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     }
 
   
-    
+    private func saveMeals() {
+        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(days, toFile: Day.ArchiveURL.path)
+        if isSuccessfulSave {
+            os_log("Meals saved", log: OSLog.default, type: .debug)
+        } else {
+            os_log("Failed", log: OSLog.default, type: .error)
+        }
+    }
+    @IBAction func unwindToMealList(sender: UIStoryboardSegue) {
+        if let sourceViewController = sender.source as? dayViewController, let days = sourceViewController.days {
+            
+            saveMeals()
+        }
+        
+    }
+
 }
