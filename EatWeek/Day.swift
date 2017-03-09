@@ -19,7 +19,10 @@ class Day : NSObject, NSCoding {
     static let DocumentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
     static let ArchiveURL = DocumentsDirectory.appendingPathComponent("days")
     
-    init(breakfast: String, lunch: String, dinner: String, snack: String) {
+    init?(breakfast: String, lunch: String, dinner: String, snack: String) {
+        guard !breakfast.isEmpty && !lunch.isEmpty && !dinner.isEmpty && !snack.isEmpty else {
+            return nil
+        }
         self.breakfast = breakfast
     self.lunch = lunch
     self.dinner = dinner
@@ -42,12 +45,29 @@ class Day : NSObject, NSCoding {
         aCoder.encode(snack, forKey: PropertyKey.snack)
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        breakfast = aDecoder.decodeObject(forKey: "breakfast") as! String
-        lunch = aDecoder.decodeObject(forKey: "lunch") as! String
-        dinner = aDecoder.decodeObject(forKey: "dinner") as! String
-        snack = aDecoder.decodeObject(forKey: "snack") as! String
-      }
-   // self.init(breakfast: breakfast, lunch: lunch, dinner: dinner, snack: snack)
-
+    required convenience init?(coder aDecoder: NSCoder) {
+        guard let breakfast = aDecoder.decodeObject(forKey: PropertyKey.breakfast) as? String else {
+            os_log("unable", log: OSLog.default, type: .debug)
+            return nil
+        }
+        
+        guard let lunch = aDecoder.decodeObject(forKey: PropertyKey.lunch) as? String else {
+            os_log("unable", log: OSLog.default, type: .debug)
+            return nil
+        }
+        
+        guard let dinner = aDecoder.decodeObject(forKey: PropertyKey.dinner) as? String else {
+            os_log("unable", log: OSLog.default, type: .debug)
+            return nil
+        }
+        guard let snack = aDecoder.decodeObject(forKey: PropertyKey.snack) as? String else {
+            os_log("unable", log: OSLog.default, type: .debug)
+            return nil
+        }
+        
+        
+        
+        self.init(breakfast: breakfast, lunch: lunch, dinner: dinner, snack: snack)
+        
+    }
 }

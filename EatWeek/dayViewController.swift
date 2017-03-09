@@ -191,8 +191,8 @@ class dayViewController: UIViewController, UITextFieldDelegate, UINavigationCont
             {
                 
                 breakBeta = true
-                var random = Int(arc4random_uniform(5))
-                var breakIm = breakArray[random]
+                let random = Int(arc4random_uniform(5))
+                let breakIm = breakArray[random]
                 breakArray.append("\(breakNoRepeat)")
                 breakArray.remove(at: random)
                 breakNoRepeat = breakIm
@@ -225,8 +225,8 @@ class dayViewController: UIViewController, UITextFieldDelegate, UINavigationCont
                 }
             if lunchAlpha == 0.0
             {
-                var random = Int(arc4random_uniform(3))
-                var lunchIm = lunchArray[random]
+                let random = Int(arc4random_uniform(3))
+                let lunchIm = lunchArray[random]
                 lunchArray.append("\(lunchNoRepeat)")
                 lunchArray.remove(at: random)
                 lunchNoRepeat = lunchIm
@@ -259,8 +259,8 @@ class dayViewController: UIViewController, UITextFieldDelegate, UINavigationCont
                 }
             if dinnerAlpha == 0.0
             {
-                var random = Int(arc4random_uniform(3))
-                var dinnerIm = dinnerArray[random]
+                let random = Int(arc4random_uniform(3))
+                let dinnerIm = dinnerArray[random]
                 dinnerArray.append("\(dinnerNoRepeat)")
                 dinnerArray.remove(at: random)
                 dinnerNoRepeat = dinnerIm
@@ -294,8 +294,8 @@ class dayViewController: UIViewController, UITextFieldDelegate, UINavigationCont
                 }
             if snackAlpha == 0.0
             {
-                var random = Int(arc4random_uniform(4))
-                var snackIm = snackArray[random]
+                let random = Int(arc4random_uniform(4))
+                let snackIm = snackArray[random]
                 snackArray.append("\(snackNoRepeat)")
                 snackArray.remove(at: random)
                 snackNoRepeat = snackIm
@@ -313,7 +313,9 @@ class dayViewController: UIViewController, UITextFieldDelegate, UINavigationCont
     }
    
     @IBAction func saveButton(_ sender: UIBarButtonItem) {
-        days = Day(breakfast: BreakfastText.text!, lunch: LunchText.text!, dinner: DinnerText.text!, snack: SnackText.text!)
+        days = Day(breakfast: BreakfastText.text!, lunch: LunchText.text!, dinner: DinnerText.text!, snack: SnackText.text!
+        
+        )
       
     }
     
