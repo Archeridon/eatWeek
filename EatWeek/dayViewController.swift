@@ -65,7 +65,6 @@ class dayViewController: UIViewController, UITextFieldDelegate, UINavigationCont
     override func viewDidLoad() {
         super.viewDidLoad()
        
-        //BreakfastText.text = "\(breakingFast)"
         breakfastImage.image = UIImage(named:"waffle")!
         lunchImage.image = UIImage(named:"sandwich")!
         dinnerImage.image = UIImage(named:"lasagna")!
@@ -76,11 +75,12 @@ class dayViewController: UIViewController, UITextFieldDelegate, UINavigationCont
         DinnerText.delegate = self
         SnackText.delegate = self
         
+        if let days = days {
             BreakfastText.text = days.breakfast
             LunchText.text = days.lunch
             DinnerText.text = days.dinner
             SnackText.text = days.snack
-        
+        }
         updateSaveButtonState()
 
     animationTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(animationCount), userInfo: nil, repeats: true)
@@ -313,11 +313,7 @@ class dayViewController: UIViewController, UITextFieldDelegate, UINavigationCont
     }
    
     @IBAction func saveButton(_ sender: UIBarButtonItem) {
-        days.breakfast = BreakfastText.text!
-        days.lunch = LunchText.text!
-        days.dinner = DinnerText!
-        days.snack = SnackText.text!
-        
+                
     }
     
     @IBAction func cancelButton(_ sender: UIBarButtonItem) {
