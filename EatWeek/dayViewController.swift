@@ -13,7 +13,7 @@ import AVFoundation
 class dayViewController: UIViewController, UITextFieldDelegate, UINavigationControllerDelegate {
     let userDefault = UserDefaults.standard
     
-    var days : Day!
+    var days : Day?
     
     @IBOutlet weak var cancelButton: UIBarButtonItem!
     @IBOutlet weak var saveButton: UIBarButtonItem!
@@ -313,7 +313,8 @@ class dayViewController: UIViewController, UITextFieldDelegate, UINavigationCont
     }
    
     @IBAction func saveButton(_ sender: UIBarButtonItem) {
-                
+        days = Day(breakfast: BreakfastText.text!, lunch: LunchText.text!, dinner: DinnerText.text!, snack: SnackText.text!)
+      
     }
     
     @IBAction func cancelButton(_ sender: UIBarButtonItem) {

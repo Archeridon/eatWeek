@@ -20,6 +20,9 @@ class Day : NSObject, NSCoding {
     static let ArchiveURL = DocumentsDirectory.appendingPathComponent("days")
     
     init?(breakfast: String, lunch: String, dinner: String, snack: String) {
+        guard !breakfast.isEmpty else {
+            return nil
+        }
         
    self.breakfast = breakfast
     self.lunch = lunch
