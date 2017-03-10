@@ -26,14 +26,14 @@ class TVViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell : UITableViewCell = self.tableView.dequeueReusableCell(withIdentifier: "cell")! as UITableViewCell
+        let cell : UITableViewCell = self.tableView.dequeueReusableCell(withIdentifier: "cell")! as UITableViewCell
         
         cell.textLabel?.text = self.days[indexPath.row]
         
         return cell
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("You selected cell #\(indexPath.row)!")
     }
 
@@ -46,6 +46,9 @@ class TVViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
             os_log("Failed", log: OSLog.default, type: .error)
         }
     }
+    
+    
+
     @IBAction func unwindToMealList(sender: UIStoryboardSegue) {
         if let sourceViewController = sender.source as? dayViewController, let days = sourceViewController.days {
             
@@ -53,5 +56,9 @@ class TVViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         }
         
     }
+    
 
-}
+    }
+
+    
+
