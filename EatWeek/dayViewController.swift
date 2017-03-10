@@ -308,7 +308,7 @@ class dayViewController: UIViewController, UITextFieldDelegate, UINavigationCont
         days.lunch = LunchText.text!
         days.dinner = DinnerText.text!
         days.snack = SnackText.text!
-      
+      //hi
     }
     
     @IBAction func cancelButton(_ sender: UIBarButtonItem) {
