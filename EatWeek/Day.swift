@@ -12,23 +12,27 @@ import os.log
 
 class Day : NSObject, NSCoding {
     
-    var breakfast: String
-    var lunch: String
-    var dinner: String
-    var snack : String
+    var breakfast : String = ""
+    var lunch : String = ""
+    var dinner: String = ""
+    var snack : String = ""
     static let DocumentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
     static let ArchiveURL = DocumentsDirectory.appendingPathComponent("days")
     
-    init?(breakfast: String, lunch: String, dinner: String, snack: String) {
-        guard !breakfast.isEmpty && !lunch.isEmpty && !dinner.isEmpty && !snack.isEmpty else {
-            return nil
-        }
+    convenience init(breakfast: String, lunch: String, dinner: String, snack: String){
+        self.init()
         self.breakfast = breakfast
-    self.lunch = lunch
-    self.dinner = dinner
-    self.snack = snack
+        self.lunch = lunch
+        self.dinner = dinner
+        self.snack = snack
+        
         
     }
+    convenience init(breakfast: String) {
+        self.init()
+        self.breakfast = breakfast
+    }
+
     
     struct PropertyKey {
         static let breakfast = "breakfast"

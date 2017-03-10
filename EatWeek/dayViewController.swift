@@ -13,7 +13,7 @@ import AVFoundation
 class dayViewController: UIViewController, UITextFieldDelegate, UINavigationControllerDelegate {
     let userDefault = UserDefaults.standard
     
-    var days : Day?
+    var days : Day!
     
     @IBOutlet weak var cancelButton: UIBarButtonItem!
     @IBOutlet weak var saveButton: UIBarButtonItem!
@@ -70,17 +70,11 @@ class dayViewController: UIViewController, UITextFieldDelegate, UINavigationCont
         dinnerImage.image = UIImage(named:"lasagna")!
         snacksImage.image = UIImage(named:"chip")!
         
-        BreakfastText.delegate = self
-        LunchText.delegate = self
-        DinnerText.delegate = self
-        SnackText.delegate = self
-        
-        if let days = days {
-            BreakfastText.text = days.breakfast
+        BreakfastText.text = days.breakfast
             LunchText.text = days.lunch
             DinnerText.text = days.dinner
             SnackText.text = days.snack
-        }
+    
         updateSaveButtonState()
 
     animationTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(animationCount), userInfo: nil, repeats: true)
