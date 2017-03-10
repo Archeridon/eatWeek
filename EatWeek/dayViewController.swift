@@ -70,10 +70,7 @@ class dayViewController: UIViewController, UITextFieldDelegate, UINavigationCont
         dinnerImage.image = UIImage(named:"lasagna")!
         snacksImage.image = UIImage(named:"chip")!
         
-        BreakfastText.text = days.breakfast
-            LunchText.text = days.lunch
-            DinnerText.text = days.dinner
-            SnackText.text = days.snack
+      
     
         updateSaveButtonState()
 
