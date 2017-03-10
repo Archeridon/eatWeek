@@ -304,7 +304,10 @@ class dayViewController: UIViewController, UITextFieldDelegate, UINavigationCont
     }
    
     @IBAction func saveButton(_ sender: UIBarButtonItem) {
-        days = Day(breakfast: BreakfastText.text!, lunch: LunchText.text!, dinner: DinnerText.text!, snack: SnackText.text!)
+        days.breakfast = BreakfastText.text!
+        days.lunch = LunchText.text!
+        days.dinner = DinnerText.text!
+        days.snack = SnackText.text!
         
         
       
